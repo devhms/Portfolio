@@ -8,10 +8,36 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        bg: "var(--bg)",
+        surface: {
+          1: "var(--surface-1)",
+          2: "var(--surface-2)",
+          3: "var(--surface-3)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          2: "var(--accent-2)",
+          glow: "var(--accent-glow)",
+        },
+        text: {
+          1: "var(--text-1)",
+          2: "var(--text-2)",
+          3: "var(--text-3)",
+        },
+        green: "var(--green)",
+        amber: "var(--amber)",
+        red: "var(--red)",
+      },
+      fontFamily: {
+        syne: ["var(--font-syne)", "sans-serif"],
+        sans: ["var(--font-dm-sans)", "sans-serif"],
+        mono: ["var(--font-dm-mono)", "monospace"],
+      },
+      letterSpacing: {
+        tighter: "-0.02em",
+        tight: "-0.01em",
+        eyebrow: "0.12em",
       },
     },
   },

@@ -3,31 +3,93 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* Design Palette */
+  --bg: #0b0b10;
+  --surface-1: #131320;
+  --surface-2: #191926;
+  --surface-3: #1e1e2e;
+  --border-sm: rgba(255, 255, 255, 0.07);
+  --border-md: rgba(255, 255, 255, 0.12);
+  --border-lg: rgba(255, 255, 255, 0.2);
+  --accent: #7b6ef6;
+  --accent-2: #a594f9;
+  --accent-glow: rgba(123, 110, 246, 0.15);
+  --text-1: #eceae4;
+  --text-2: #7878a0;
+  --text-3: #4a4a6a;
+  --green: #3ed9a4;
+  --amber: #f0a854;
+  --red: #f06070;
+
+  /* Lenis support */
+  --scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (pointer: coarse) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    scroll-behavior: smooth;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--text-1);
+  background: var(--bg);
+  font-family: var(--font-dm-sans), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--surface-2);
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+.animate-pulse-subtle {
+  animation: blink 2s infinite ease-in-out;
+}
+
+/* Typography Helpers */
+.text-display-h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+h1 {
+  @apply font-syne font-extrabold tracking-tighter;
+}
+
+h2 {
+  @apply font-syne font-bold tracking-tight;
+}
+
+.eyebrow {
+  @apply font-sans font-medium text-[11px] uppercase tracking-eyebrow text-accent;
 }
