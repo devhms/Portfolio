@@ -2,7 +2,7 @@
 
 A high-performance, immersive developer portfolio built with a focus on precision engineering, meaningful motion, and atomic design principles.
 
-![Portfolio Preview](https://skill-deploy-fwgk5oq8bj-agent-skill-vercel.vercel.app)
+![Portfolio Preview](https://devhms.vercel.app)
 
 ## 🏗 Architectural Foundation
 
