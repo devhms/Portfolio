@@ -27,7 +27,7 @@ function StatItem({ value, label, suffix = '' }: StatItemProps) {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: '0px 0px -100px 0px' }
     );
 
     if (ref.current) observer.observe(ref.current);

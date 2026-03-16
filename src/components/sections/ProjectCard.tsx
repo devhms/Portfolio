@@ -53,11 +53,12 @@ export function ProjectCard({ type, year, title, description, stack, featured }:
           {title}
         </h3>
 
-        {featured ? (
-          <p className="text-text-2 text-lg md:text-xl max-w-2xl mb-8 font-light leading-relaxed text-wrap-balance">
-            {description}
-          </p>
-        ) : null}
+        <p className={cn(
+          "text-text-2 mb-8 font-light leading-relaxed text-wrap-balance",
+          featured ? "text-lg md:text-xl max-w-2xl" : "text-sm max-w-lg"
+        )}>
+          {description}
+        </p>
 
         <div 
           data-magnetic 

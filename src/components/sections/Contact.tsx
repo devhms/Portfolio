@@ -65,19 +65,26 @@ export function Contact() {
       if (!formData.name || !formData.email || !formData.message) {
         setLogs(prev => [...prev, { type: 'error', content: 'Incomplete form. Ensure name, email, and message are set.' }]);
       } else {
-        setLogs(prev => [...prev, { type: 'system', content: 'Validating…' }]);
+        setLogs(prev => [...prev, { type: 'system', content: `Preparing to transmit message from ${formData.name}...` }]);
         
-        const steps = ['Sending.', 'Sending..', 'Sending…'];
+        const steps = [
+          'Handshaking with API gateway (127.0.0.1:443)...',
+          'Encrypting payload with RSA-4096...',
+          'Transmitting packets...',
+          'Waiting for server acknowledgment...'
+        ];
+        
         steps.forEach((step, index) => {
           setTimeout(() => {
             setLogs(prev => [...prev, { type: 'system', content: step }]);
-          }, (index + 1) * 400);
+          }, (index + 1) * 600);
         });
 
         setTimeout(() => {
-          setLogs(prev => [...prev, { type: 'success', content: '✓ Sent! I\'ll reply within 24hrs.' }]);
+          setLogs(prev => [...prev, { type: 'success', content: '✓ [200 OK] Message successfully delivered to ibrahimsalman.dev' }]);
+          setLogs(prev => [...prev, { type: 'system', content: 'I will reply within 24 hours. Connection terminated.' }]);
           setFormData({ name: '', email: '', message: '' });
-        }, 2000);
+        }, 3500);
       }
     } else if (trimmedCmd === 'clear') {
       setLogs([{ type: 'system', content: 'Terminal cleared.' }]);
@@ -185,15 +192,15 @@ export function Contact() {
 
         {/* Social Links */}
         <div className="mt-12 flex justify-center gap-8">
-          <a href="#" data-magnetic className="flex items-center gap-2 text-text-2 hover:text-accent transition-colors">
+          <a href="https://github.com/hafizmuhammadibrahimsalman-create" target="_blank" rel="noopener noreferrer" data-magnetic className="flex items-center gap-2 text-text-2 hover:text-accent transition-colors">
             <Github className="w-5 h-5" />
             <span className="text-xs uppercase tracking-widest font-mono">GitHub</span>
           </a>
-          <a href="#" data-magnetic className="flex items-center gap-2 text-text-2 hover:text-accent transition-colors">
+          <a href="https://linkedin.com/in/ibrahimsalman" target="_blank" rel="noopener noreferrer" data-magnetic className="flex items-center gap-2 text-text-2 hover:text-accent transition-colors">
             <Linkedin className="w-5 h-5" />
             <span className="text-xs uppercase tracking-widest font-mono">LinkedIn</span>
           </a>
-          <a href="#" data-magnetic className="flex items-center gap-2 text-text-2 hover:text-accent transition-colors">
+          <a href="mailto:ibrahimsalman.dev@gmail.com" data-magnetic className="flex items-center gap-2 text-text-2 hover:text-accent transition-colors">
             <Mail className="w-5 h-5" />
             <span className="text-xs uppercase tracking-widest font-mono">Email</span>
           </a>

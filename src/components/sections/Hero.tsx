@@ -75,7 +75,7 @@ export function Hero() {
           
           <div ref={titleRef} className="perspective-1000">
             <h1 className="text-display-h1 leading-[1.1] text-text-1 text-wrap-balance">
-              I build <FuzzyText text="fast" />, beautiful <br />
+              I build <span className="text-accent underline-effect">fast</span>, beautiful <br />
               <span className="text-accent">web experiences.</span>
             </h1>
           </div>

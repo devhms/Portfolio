@@ -69,15 +69,15 @@ export function About() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="about-text flex flex-col gap-6">
-            <span className="eyebrow">Philosophy</span>
+            <span className="eyebrow">Biography</span>
             <h2 className="text-4xl md:text-5xl text-text-1 font-syne font-bold leading-tight text-wrap-balance">
-              Engineering with <span className="text-accent underline decoration-accent/30 underline-offset-8">intent.</span>
+              Building from <span className="text-accent underline decoration-accent/30 underline-offset-8">Taxila</span> to the world.
             </h2>
             <p className="text-lg text-text-2 font-light leading-relaxed">
-              I believe that the web should be as performant as it is beautiful. For over 5 years, I&apos;ve specialized in bridging the gap between high-level design and scalable architectural code.
+              I am <span className="text-text-1 font-medium text-accent">Ibrahim Salman</span>, a Senior Frontend Architect and Creative Developer based in Taxila, Pakistan. My journey is defined by a relentless obsession with the "Goldilocks Zone" of engineering—where high-performance code meets museum-grade visual design.
             </p>
             <p className="text-lg text-text-2 font-light leading-relaxed">
-              My approach focuses on minimal overhead, meaningful motion, and atomic design principles. Whether it&apos;s a real-time AI dashboard or a complex 3D configurator, I write code that lasts and feels alive.
+              With over half a decade of experience, I specialize in architecting complex React ecosystems and immersive 3D WebGL experiences. I don&apos;t just ship features; I ship precision-engineered digital products that feel as good as they look.
             </p>
           </div>
 

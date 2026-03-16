@@ -23,8 +23,36 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Senior Frontend Architect | Technical Portfolio',
-  description: 'Technical portfolio of a world-class senior frontend engineer and creative director specializing in React, Three.js and performance.',
+  title: 'Ibrahim Salman | Senior Frontend Architect',
+  description: 'Technical portfolio of Ibrahim Salman, a senior frontend engineer and creative director based in Taxila, specializing in React, Three.js and performance engineering.',
+  keywords: ['Frontend Architect', 'React Developer', 'Three.js', 'WebGL', 'Taxila Developer', 'Ibrahim Salman'],
+  authors: [{ name: 'Ibrahim Salman' }],
+  openGraph: {
+    title: 'Ibrahim Salman | Senior Frontend Architect',
+    description: 'Building high-performance, award-winning digital experiences with React, TypeScript, and Three.js.',
+    url: 'https://skill-deploy-fwgk5oq8bj-agent-skill-vercel.vercel.app',
+    siteName: 'Ibrahim Salman Portfolio',
+    images: [
+      {
+        url: 'https://skill-deploy-fwgk5oq8bj-agent-skill-vercel.vercel.app/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Ibrahim Salman Portfolio Preview',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ibrahim Salman | Senior Frontend Architect',
+    description: 'Building high-performance digital experiences.',
+    images: ['https://skill-deploy-fwgk5oq8bj-agent-skill-vercel.vercel.app/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport: Viewport = {
