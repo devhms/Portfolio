@@ -1,10 +1,12 @@
 import Lenis from 'lenis';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 
+// ScrollTrigger already registered in gsap.ts — do not register again here.
+
 let lenis: Lenis | null = null;
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
+export function initLenis(): Lenis {
+  if (lenis) return lenis;
 
   lenis = new Lenis({
     duration: 1.2,
@@ -12,7 +14,6 @@ if (typeof window !== 'undefined') {
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: true,
-    touchMultiplier: 2,
   });
 
   lenis.on('scroll', ScrollTrigger.update);
@@ -22,6 +23,15 @@ if (typeof window !== 'undefined') {
   });
 
   gsap.ticker.lagSmoothing(0);
+
+  return lenis;
+}
+
+export function destroyLenis() {
+  if (lenis) {
+    lenis.destroy();
+    lenis = null;
+  }
 }
 
 export { lenis };

@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { Float, Wireframe } from '@react-three/drei';
 import * as THREE from 'three';
@@ -7,8 +7,7 @@ import { useDebugStore } from '@/store/debug.store';
 export function FloatingModel() {
   const meshRef = useRef<THREE.Mesh>(null);
   const { isDebug } = useDebugStore();
-  
-  // Load local matcap texture
+
   const matcap = useLoader(THREE.TextureLoader, '/textures/matcap-purple.png');
 
   useFrame((state) => {
@@ -20,7 +19,11 @@ export function FloatingModel() {
 
   return (
     <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.8}>
-      <mesh ref={meshRef} castShadow receiveShadow>
+      {/*
+        castShadow / receiveShadow removed: Scene has no lights and uses MeshMatcapMaterial
+        which ignores the lighting system entirely. Those props had zero effect.
+      */}
+      <mesh ref={meshRef}>
         <icosahedronGeometry args={[1.4, 4]} />
         <meshMatcapMaterial matcap={matcap} />
         {isDebug && <Wireframe stroke="#3ED9A4" fill="#3ED9A4" thickness={0.02} colorBackfaces={false} />}

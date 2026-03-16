@@ -1,6 +1,6 @@
 {
-	"name": "portfolio2",
-	"version": "0.1.0",
+	"name": "ibrahim-salman-portfolio",
+	"version": "1.0.0",
 	"private": true,
 	"engines": {
 		"node": ">=20"
@@ -24,13 +24,13 @@
 		"react-dom": "^18",
 		"tailwind-merge": "^3.5.0",
 		"three": "^0.170.0",
-		"zustand": "^4.5.7",
-		"critters": "^0.0.23"
+		"zustand": "^4.5.7"
 	},
 	"devDependencies": {
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
+		"critters": "^0.0.23",
 		"eslint-config-next": "14.2.5",
 		"jsrepo": "^3.6.2",
 		"postcss": "^8",

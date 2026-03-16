@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface MagnetLinesProps {
   rows?: number;
@@ -16,7 +17,8 @@ export function MagnetLines({
   className,
 }: MagnetLinesProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
+  const mouseRef = useRef<{ x: number | null; y: number | null }>({ x: null, y: null });
+  const rafIdRef = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -42,7 +44,18 @@ export function MagnetLines({
     window.addEventListener('mousemove', handleMouseMove);
     handleResize();
 
+    // Intersection observer — pause RAF when canvas is off-screen
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
     const draw = () => {
+      rafIdRef.current = requestAnimationFrame(draw);
+      if (!isVisible) return; // Skip drawing when off-screen
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.strokeStyle = color;
       ctx.lineWidth = 1;
@@ -50,15 +63,15 @@ export function MagnetLines({
       const cellW = canvas.width / columns;
       const cellH = canvas.height / rows;
 
+      // Default: point lines downward if mouse hasn't entered yet
+      const mx = mouseRef.current.x ?? canvas.width / 2;
+      const my = mouseRef.current.y ?? canvas.height * 2;
+
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
           const x = c * cellW + cellW / 2;
           const y = r * cellH + cellH / 2;
-
-          const dx = mouseRef.current.x - x;
-          const dy = mouseRef.current.y - y;
-          const angle = Math.atan2(dy, dx);
-
+          const angle = Math.atan2(my - y, mx - x);
           const length = 15;
 
           ctx.save();
@@ -71,22 +84,17 @@ export function MagnetLines({
           ctx.restore();
         }
       }
-
-      requestAnimationFrame(draw);
     };
 
-    const rafId = requestAnimationFrame(draw);
+    rafIdRef.current = requestAnimationFrame(draw);
 
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafIdRef.current);
+      observer.disconnect();
     };
   }, [rows, columns, color]);
 
   return <canvas ref={canvasRef} className={cn('w-full h-full pointer-events-none', className)} />;
-}
-
-function cn(...classes: (string | undefined | boolean)[]) {
-  return classes.filter(Boolean).join(' ');
 }

@@ -20,9 +20,6 @@
   --green: #3ed9a4;
   --amber: #f0a854;
   --red: #f06070;
-
-  /* Lenis support */
-  --scroll-behavior: smooth;
 }
 
 @media (pointer: coarse) {
@@ -92,4 +89,36 @@ h2 {
 
 .eyebrow {
   @apply font-sans font-medium text-[11px] uppercase tracking-eyebrow text-accent;
+}
+
+/* underline-effect: animated underline on accent text */
+.underline-effect {
+  position: relative;
+}
+.underline-effect::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* custom-scrollbar: styled scrollbar for terminal and debug panel */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--border-md);
 }

@@ -1,16 +1,13 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
-import { gsap } from '@/lib/gsap';
+import { useRef } from 'react';
 import { Skill } from '@/types';
 import { cn } from '@/lib/utils';
 
-export function SkillCard({ name, level, percentage, color, tags }: Skill) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
+// Note: internal bar animation is handled by staggered ScrollTrigger in parent Skills.tsx
 
-  // Internal bar animation removed to be handled by staggered ScrollTrigger in parent (Skills.tsx)
-  useEffect(() => {}, []);
+export function SkillCard({ name, level, percentage, color, tags }: Skill) {
+  const barRef = useRef<HTMLDivElement>(null);
 
   const colorMap = {
     accent: 'bg-accent',
@@ -21,7 +18,6 @@ export function SkillCard({ name, level, percentage, color, tags }: Skill) {
 
   return (
     <div
-      ref={cardRef}
       data-magnetic
       className="group p-6 bg-surface-1 border border-border-sm rounded-xl hover:bg-surface-2 hover:border-border-md transition-all duration-300"
     >

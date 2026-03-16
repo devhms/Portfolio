@@ -7,46 +7,46 @@ import { Skill } from '@/types';
 
 const SKILLS_DATA: Skill[] = [
   {
+    name: 'Python',
+    level: 'Advanced',
+    percentage: 75,
+    color: 'green',
+    tags: ['BeautifulSoup', 'FastAPI', 'LangChain'],
+  },
+  {
     name: 'React / Next.js',
-    level: 'Expert',
-    percentage: 95,
+    level: 'Advanced',
+    percentage: 68,
     color: 'accent',
-    tags: ['R19', 'RSC', 'Zustand'],
+    tags: ['App Router', 'RSC', 'Hooks'],
   },
   {
     name: 'TypeScript',
-    level: 'Expert',
-    percentage: 92,
+    level: 'Proficient',
+    percentage: 60,
     color: 'accent',
-    tags: ['Strict', 'Generics', 'Zod'],
+    tags: ['Interfaces', 'Generics', 'Types'],
   },
   {
-    name: 'Python / AI',
+    name: 'C++ / OOP',
     level: 'Advanced',
-    percentage: 82,
+    percentage: 72,
     color: 'green',
-    tags: ['LangChain', 'FastAPI', 'PyTorch'],
+    tags: ['OOP', 'DSA', 'Algorithms'],
   },
   {
     name: 'Three.js / WebGL',
-    level: 'Advanced',
-    percentage: 78,
-    color: 'green',
-    tags: ['R3F', 'GLSL', 'Draco'],
-  },
-  {
-    name: 'Node.js / DevOps',
-    level: 'Advanced',
-    percentage: 80,
-    color: 'green',
-    tags: ['Docker', 'CI/CD', 'Linux'],
-  },
-  {
-    name: 'Algorithms / DSA',
     level: 'Proficient',
-    percentage: 72,
+    percentage: 50,
     color: 'amber',
-    tags: ['C++', 'Competitive', 'OOP'],
+    tags: ['R3F', 'Matcap', 'Drei'],
+  },
+  {
+    name: 'AI / LangChain',
+    level: 'Proficient',
+    percentage: 55,
+    color: 'amber',
+    tags: ['Ollama', 'CrewAI', 'OCR'],
   },
 ];
 
@@ -59,7 +59,6 @@ export function Skills() {
     if (isReduced) return;
 
     const ctx = gsap.context(() => {
-      // Card entry animation
       gsap.from('.skill-card', {
         opacity: 0,
         y: 40,
@@ -73,7 +72,6 @@ export function Skills() {
         },
       });
 
-      // Skill bar fill animation
       gsap.from('.skill-bar-fill', {
         width: 0,
         stagger: 0.1,

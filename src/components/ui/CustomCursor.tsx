@@ -9,8 +9,9 @@ export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const { isHovered, label } = useCursorStore();
   const [mounted, setMounted] = useState(false);
-  const mousePos = useRef({ x: 0, y: 0 });
-  const cursorPos = useRef({ x: 0, y: 0 });
+  const mousePos = useRef({ x: -100, y: -100 }); // Start off-screen, not at (0,0)
+  const cursorPos = useRef({ x: -100, y: -100 });
+  const hasMovedRef = useRef(false);
 
   useEffect(() => {
     setMounted(true);
@@ -19,6 +20,11 @@ export function CustomCursor() {
 
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
+      if (!hasMovedRef.current) {
+        // Snap to real position immediately on first move — no visible flash at (0,0)
+        cursorPos.current = { x: e.clientX, y: e.clientY };
+        hasMovedRef.current = true;
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -52,11 +58,12 @@ export function CustomCursor() {
       ref={cursorRef}
       className={cn(
         'fixed top-0 left-0 w-2.5 h-2.5 bg-accent rounded-full pointer-events-none z-[9999] mix-blend-difference',
-        isHovered && 'scale-[4]'
+        // Scale via transform — listed in the transition so it animates smoothly
+        isHovered ? 'scale-[4]' : 'scale-100'
       )}
-      style={{ 
+      style={{
         willChange: 'transform',
-        transition: 'width 0.3s, height 0.3s, background-color 0.3s'
+        transition: 'transform 0.3s ease, background-color 0.3s',
       }}
     >
       {label && (

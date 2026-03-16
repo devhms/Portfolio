@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useDebugStore } from '@/store/debug.store';
 import { useCursorStore } from '@/store/cursor.store';
-import { useFrame } from '@react-three/fiber';
+
+// useFrame and useRef imports removed — were present after the export (orphaned, unused)
 
 export function DebugPanel() {
   const { isDebug, fps } = useDebugStore();
@@ -22,14 +22,12 @@ export function DebugPanel() {
           <span className="text-[8px] bg-accent/20 text-accent px-1 rounded">LIVE</span>
         </div>
         <pre className="whitespace-pre-wrap">
-          {JSON.stringify({ 
+          {JSON.stringify({
             debug: useDebugStore.getState(),
-            cursor: useCursorStore.getState() 
+            cursor: { x: cursor.x, y: cursor.y, isHovered: cursor.isHovered, label: cursor.label },
           }, null, 2)}
         </pre>
       </div>
     </>
   );
 }
-
-import { useRef } from 'react';

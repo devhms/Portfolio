@@ -3,18 +3,19 @@
 import { useRef, useEffect } from 'react';
 import { gsap } from '@/lib/gsap';
 import { Zap, Bot, Palette } from 'lucide-react';
-import { cn } from '@/lib/utils';
- 
-const ICON_WRAPPER_CLASSES = "w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center";
+
+// cn import removed — was imported but never used in this component
+
+const ICON_WRAPPER_CLASSES = 'w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center';
 
 interface RoleCardProps {
   icon: React.ElementType;
   title: string;
   description: string;
-  delay?: number;
+  // delay prop removed — was defined but never used inside RoleCard
 }
 
-function RoleCard({ icon: Icon, title, description, delay = 0 }: RoleCardProps) {
+function RoleCard({ icon: Icon, title, description }: RoleCardProps) {
   return (
     <div data-magnetic className="role-card p-6 bg-surface-1 border border-border-sm rounded-xl hover:border-accent/40 transition-colors duration-300">
       <div className="flex items-center gap-4 mb-3">
@@ -74,28 +75,28 @@ export function About() {
               Building from <span className="text-accent underline decoration-accent/30 underline-offset-8">Taxila</span> to the world.
             </h2>
             <p className="text-lg text-text-2 font-light leading-relaxed">
-              I am <span className="text-text-1 font-medium text-accent">Ibrahim Salman</span>, a Senior Frontend Architect and Creative Developer based in Taxila, Pakistan. My journey is defined by a relentless obsession with the "Goldilocks Zone" of engineering—where high-performance code meets museum-grade visual design.
+              I am <span className="text-accent font-medium">Ibrahim Salman</span>, a Software Engineering student at UET Taxila and a self-driven developer building at the intersection of web, AI, and data. From scraping live stock data to shipping creative 3D web experiences, I care about code that works and feels alive.
             </p>
             <p className="text-lg text-text-2 font-light leading-relaxed">
-              With over half a decade of experience, I specialize in architecting complex React ecosystems and immersive 3D WebGL experiences. I don&apos;t just ship features; I ship precision-engineered digital products that feel as good as they look.
+              Alongside my studies I lead digital outreach and build tools for IJT — applying what I learn in the real world from day one. I don&apos;t wait to graduate to ship. I ship now.
             </p>
           </div>
 
           <div className="role-cards-container flex flex-col gap-4">
-            <RoleCard 
+            <RoleCard
               icon={Zap}
-              title="Senior Frontend Architect"
-              description="React, TypeScript, performance-first architecture and design system scaling."
+              title="Web Developer"
+              description="React, Next.js, TypeScript — building fast, accessible, visually sharp interfaces."
             />
-            <RoleCard 
+            <RoleCard
               icon={Bot}
-              title="Fullstack Engineer"
-              description="End-to-end products, robust APIs, AI agent integration and cloud infrastructure."
+              title="Python & AI Builder"
+              description="Web scrapers, data pipelines, LangChain agents, OCR workflows, and Ollama-powered tools."
             />
-            <RoleCard 
+            <RoleCard
               icon={Palette}
-              title="UI Developer"
-              description="Motion design, WebGL/Three.js, and crafting high-fidelity accessible interfaces."
+              title="Creative Developer"
+              description="Three.js, GSAP, WebGL — adding motion and depth to interfaces that need to be remembered."
             />
           </div>
         </div>

@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect } from 'react';
-import { lenis } from '@/lib/lenis';
+import { initLenis, destroyLenis } from '@/lib/lenis';
 
 export function SmoothScroll() {
   useEffect(() => {
-    // This effect ensures the lenis module is loaded and side effects run
-    // lenis is a singleton already configured in lib/lenis.ts
+    initLenis();
     return () => {
-      lenis?.destroy();
+      destroyLenis();
     };
   }, []);
 

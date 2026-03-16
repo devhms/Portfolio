@@ -13,7 +13,7 @@ const syne = Syne({
 const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-dm-sans',
-  weight: ['300', '500'],
+  weight: ['300', '400', '500'],
 });
 
 const dmMono = DM_Mono({
@@ -23,18 +23,18 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Ibrahim Salman | Senior Frontend Architect',
-  description: 'Technical portfolio of Ibrahim Salman, a senior frontend engineer and creative director based in Taxila, specializing in React, Three.js and performance engineering.',
-  keywords: ['Frontend Architect', 'React Developer', 'Three.js', 'WebGL', 'Taxila Developer', 'Ibrahim Salman'],
+  title: 'Ibrahim Salman | Software Engineer',
+  description: 'Portfolio of Ibrahim Salman, a Software Engineering student at UET Taxila building web apps, AI tools, and creative digital experiences.',
+  keywords: ['Software Engineer', 'React Developer', 'Python', 'Next.js', 'UET Taxila', 'Ibrahim Salman'],
   authors: [{ name: 'Ibrahim Salman' }],
   openGraph: {
-    title: 'Ibrahim Salman | Senior Frontend Architect',
-    description: 'Building high-performance, award-winning digital experiences with React, TypeScript, and Three.js.',
-    url: 'https://skill-deploy-fwgk5oq8bj-agent-skill-vercel.vercel.app',
+    title: 'Ibrahim Salman | Software Engineer',
+    description: 'Building web apps, AI tools, and creative digital experiences.',
+    url: 'https://devhms.vercel.app',
     siteName: 'Ibrahim Salman Portfolio',
     images: [
       {
-        url: 'https://skill-deploy-fwgk5oq8bj-agent-skill-vercel.vercel.app/og-image.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Ibrahim Salman Portfolio Preview',
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ibrahim Salman | Senior Frontend Architect',
-    description: 'Building high-performance digital experiences.',
-    images: ['https://skill-deploy-fwgk5oq8bj-agent-skill-vercel.vercel.app/og-image.png'],
+    title: 'Ibrahim Salman | Software Engineer',
+    description: 'Building web apps, AI tools, and creative digital experiences.',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -68,9 +68,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable} ${dmMono.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      </head>
       <body className="antialiased selection:bg-accent selection:text-white bg-bg">
         <ConsoleBreadcrumb />
         <ClientProviders>

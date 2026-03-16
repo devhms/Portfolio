@@ -16,7 +16,9 @@ function StatItem({ value, label, suffix = '' }: StatItemProps) {
   const { number } = useSpring({
     from: { number: 0 },
     to: { number: inView ? value : 0 },
-    config: { mass: 1, tension: 20, friction: 10 },
+    // Fixed: was critically underdamped (tension:20, friction:10) causing wild oscillation.
+    // These values produce a smooth count-up with a gentle ease-out settle.
+    config: { mass: 1, tension: 80, friction: 30 },
   });
 
   useEffect(() => {
@@ -27,7 +29,9 @@ function StatItem({ value, label, suffix = '' }: StatItemProps) {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0, rootMargin: '0px 0px -100px 0px' }
+      // Fixed rootMargin: was '-100px' which prevented trigger on small screens.
+      // Now triggers as soon as 20% of the element is visible.
+      { threshold: 0.2 }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -48,10 +52,10 @@ function StatItem({ value, label, suffix = '' }: StatItemProps) {
 export function StatsRow() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 mt-16 border-t border-border-sm">
-      <StatItem value={48} label="Projects" suffix="+" />
-      <StatItem value={5} label="Experience" suffix="yr" />
-      <StatItem value={4096} label="Git Commits" />
-      <StatItem value={10} label="AI Projects" />
+      <StatItem value={12} label="Projects" suffix="+" />
+      <StatItem value={1} label="Experience" suffix="yr" />
+      <StatItem value={200} label="Git Commits" suffix="+" />
+      <StatItem value={5} label="AI Projects" />
     </div>
   );
 }

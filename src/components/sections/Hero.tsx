@@ -4,10 +4,11 @@ import dynamic from 'next/dynamic';
 import { useRef, useEffect, useState } from 'react';
 import { gsap } from '@/lib/gsap';
 import { AvailabilityBadge } from '@/components/ui/AvailabilityBadge';
-import { FuzzyText } from '@/components/ui/FuzzyText';
 import { StatsRow } from '@/components/sections/StatsRow';
 import { MagnetLines } from '@/components/ui/MagnetLines';
 import { CanvasSkeleton } from '@/components/three/CanvasSkeleton';
+
+// FuzzyText import removed — component was imported but never used in JSX
 
 const Scene = dynamic(() => import('@/components/three/Scene').then((mod) => mod.Scene), {
   ssr: false,
@@ -28,7 +29,6 @@ export function Hero() {
     if (mobileCheck) return;
 
     const ctx = gsap.context(() => {
-      // Entry animations
       gsap.from(titleRef.current, {
         opacity: 0,
         y: 60,
@@ -45,7 +45,6 @@ export function Hero() {
         ease: 'power3.out',
       });
 
-      // Scroll animations for the 3D canvas
       if (canvasWrapperRef.current) {
         gsap.to(canvasWrapperRef.current, {
           scale: 0.7,
@@ -72,7 +71,7 @@ export function Hero() {
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
         <div className="flex flex-col gap-6 z-10">
           <AvailabilityBadge />
-          
+
           <div ref={titleRef} className="perspective-1000">
             <h1 className="text-display-h1 leading-[1.1] text-text-1 text-wrap-balance">
               I build <span className="text-accent underline-effect">fast</span>, beautiful <br />
@@ -81,17 +80,28 @@ export function Hero() {
           </div>
 
           <p ref={subTitleRef} className="text-lg md:text-xl text-text-2 max-w-[560px] font-light leading-relaxed text-wrap-balance">
-            Senior Frontend Architect with 5+ years of experience shipping award-winning digital products. 
-            Deep expert in React, Three.js, and performance engineering.
+            Software Engineering student at UET Taxila. Building web apps, AI tools, and creative digital experiences with React, Python, and Three.js.
           </p>
 
           <div className="flex flex-wrap gap-4 mt-4">
-            <button data-magnetic className="px-8 py-4 bg-accent text-white font-medium rounded-full hover:bg-accent-2 transition-colors duration-300">
+            {/* Scroll to projects section */}
+            <a
+              href="#projects"
+              data-magnetic
+              className="px-8 py-4 bg-accent text-white font-medium rounded-full hover:bg-accent-2 transition-colors duration-300"
+            >
               View my work
-            </button>
-            <button data-magnetic className="px-8 py-4 bg-transparent border border-border-md text-text-1 font-medium rounded-full hover:bg-surface-1 transition-colors duration-300">
+            </a>
+            {/* Link to actual CV — update href when CV PDF is uploaded to /public/cv.pdf */}
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-magnetic
+              className="px-8 py-4 bg-transparent border border-border-md text-text-1 font-medium rounded-full hover:bg-surface-1 transition-colors duration-300"
+            >
               Download CV
-            </button>
+            </a>
           </div>
 
           <StatsRow />
