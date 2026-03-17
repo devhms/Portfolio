@@ -49,10 +49,10 @@ function StatItem({ value, label, suffix = '' }: StatItemProps) {
 export function StatsRow() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 mt-16 border-t border-border-sm">
-      <StatItem value={12} label="Projects" suffix="+" />
+      <StatItem value={5} label="Projects" suffix="+" />
       <StatItem value={1} label="Experience" suffix="yr" />
-      <StatItem value={200} label="Git Commits" suffix="+" />
-      <StatItem value={5} label="AI Projects" />
+      <StatItem value={30} label="Git Commits" suffix="+" />
+      <StatItem value={3} label="AI Projects" />
     </div>
   );
 }
