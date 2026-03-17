@@ -12,7 +12,7 @@ export interface Project {
 export interface Skill {
   name: string;
   level: 'Expert' | 'Advanced' | 'Proficient';
-  percentage: number;
+  info: string; // e.g. "8+ Projects", "2yrs exp"
   color: 'accent' | 'green' | 'amber' | 'red';
   tags: string[];
 }

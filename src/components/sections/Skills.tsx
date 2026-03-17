@@ -9,42 +9,42 @@ const SKILLS_DATA: Skill[] = [
   {
     name: 'Python',
     level: 'Advanced',
-    percentage: 75,
+    info: '10+ projects including scrapers & data pipelines',
     color: 'green',
     tags: ['BeautifulSoup', 'FastAPI', 'LangChain'],
   },
   {
     name: 'React / Next.js',
     level: 'Advanced',
-    percentage: 68,
+    info: 'Built 5+ high-performance web applications',
     color: 'accent',
     tags: ['App Router', 'RSC', 'Hooks'],
   },
   {
     name: 'TypeScript',
     level: 'Proficient',
-    percentage: 60,
+    info: 'Strictly typed foundations for all web projects',
     color: 'accent',
     tags: ['Interfaces', 'Generics', 'Types'],
   },
   {
     name: 'C++ / OOP',
     level: 'Advanced',
-    percentage: 72,
+    info: 'Strong DSA foundation and systems programming',
     color: 'green',
     tags: ['OOP', 'DSA', 'Algorithms'],
   },
   {
     name: 'Three.js / WebGL',
     level: 'Proficient',
-    percentage: 50,
+    info: 'Creative 3D experiences and mesh optimizations',
     color: 'amber',
     tags: ['R3F', 'Matcap', 'Drei'],
   },
   {
     name: 'AI / LangChain',
     level: 'Proficient',
-    percentage: 55,
+    info: 'LLM agents and automated data extraction',
     color: 'amber',
     tags: ['Ollama', 'CrewAI', 'OCR'],
   },
@@ -68,18 +68,6 @@ export function Skills() {
         scrollTrigger: {
           trigger: gridRef.current,
           start: 'top 85%',
-          once: true,
-        },
-      });
-
-      gsap.from('.skill-bar-fill', {
-        width: 0,
-        stagger: 0.1,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: 'top 80%',
           once: true,
         },
       });

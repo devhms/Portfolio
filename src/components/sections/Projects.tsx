@@ -13,7 +13,7 @@ const PROJECTS_DATA: Project[] = [
     title: 'Dawn News Scraper',
     description: 'Automated news aggregator using Python and BeautifulSoup that scrapes Dawn.com, parses headlines, categories, and article bodies, and exports structured data for downstream analysis.',
     stack: ['Python', 'BeautifulSoup', 'Requests', 'JSON'],
-    link: 'https://github.com/devhms',
+    link: 'https://github.com/devhms/Dawn-News-Scraper',
     featured: true,
   },
   {
@@ -23,7 +23,7 @@ const PROJECTS_DATA: Project[] = [
     title: 'B.L.A.S.T. — PSX Data Pipeline',
     description: 'Real-time Pakistan Stock Exchange data pipeline that fetches live quotes and pushes them to Google Sheets for tracking and analysis.',
     stack: ['Python', 'gspread', 'Google Sheets API', 'Requests'],
-    link: 'https://github.com/devhms',
+    link: 'https://github.com/devhms/PSX-Data-Pipeline',
     featured: false,
   },
   {

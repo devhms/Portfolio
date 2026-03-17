@@ -2,6 +2,7 @@
 
 import { useSpring, animated } from '@react-spring/web';
 import { useEffect, useState, useRef } from 'react';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 
 interface StatItemProps {
   value: number;
@@ -22,20 +23,16 @@ function StatItem({ value, label, suffix = '' }: StatItemProps) {
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      // Fixed rootMargin: was '-100px' which prevented trigger on small screens.
-      // Now triggers as soon as 20% of the element is visible.
-      { threshold: 0.2 }
-    );
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: ref.current,
+        start: 'top 85%',
+        onEnter: () => setInView(true),
+        once: true,
+      });
+    }, ref);
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => ctx.revert();
   }, []);
 
   return (
