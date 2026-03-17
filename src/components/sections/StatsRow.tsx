@@ -1,4 +1,5 @@
 'use client';
+// Build trigger: Refined stats and robust ScrollTrigger
 
 import { useSpring, animated } from '@react-spring/web';
 import { useEffect, useState, useRef } from 'react';
